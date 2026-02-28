@@ -32,6 +32,17 @@
 				<configuration>
                     <muleRuntimeVersion>4.11.0</muleRuntimeVersion>
                     <download>true</download>
+                    <deploy>
+                       <target>cloudhub</target>
+                       <cloudhub>
+                              <username>${USERNAME}</username>
+                              <password>${PASSWORD}</password>
+                              <applicationName>git-demo-test</applicationName>
+                              <region>us-east-1</region> <!-- change to your runtime region -->
+                              <workerType>0.1 vCores</workerType>
+                                <workers>1</workers>
+                       </cloudhub>
+                      </deploy>
                 </configuration>
 			</plugin>
 		</plugins>
