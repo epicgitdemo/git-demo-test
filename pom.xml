@@ -72,6 +72,9 @@
 			<name>MuleSoft Releases Repository</name>
 			<layout>default</layout>
 			<url>https://repository.mulesoft.org/nexus/repository/releases/</url>
+	    <releases>
+            <enabled>true</enabled>
+        </releases>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
