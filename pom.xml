@@ -39,7 +39,7 @@
                               <password>${PASSWORD}</password>
                               <applicationName>git-demo-test</applicationName>
                               <region>us-east-1</region> <!-- change to your runtime region -->
-                              <workerType>0.1 vCores</workerType>
+                              <workerType>MICRO</workerType>
                                 <workers>1</workers>
                        </cloudhub>
                       </deploy>
