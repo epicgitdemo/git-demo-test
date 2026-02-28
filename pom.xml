@@ -15,6 +15,8 @@
 
 		<app.runtime>4.11.0</app.runtime>
 		<mule.maven.plugin.version>4.7.0</mule.maven.plugin.version>
+		    <anypoint.username>${anypoint.username}</anypoint.username>
+              <anypoint.password>${anypoint.password}</anypoint.password>
 	</properties>
 
 	<build>
@@ -35,8 +37,8 @@
                     <deploy>
                        <target>cloudhub</target>
                        <cloudhub>
-                              <username>${USERNAME}</username>
-                              <password>${PASSWORD}</password>
+                              <username>${anypoint.username}</username>
+                              <password>${anypoint.password}</password>
                               <applicationName>git-demo-test</applicationName>
                               <region>us-east-1</region> <!-- change to your runtime region -->
                               <workerType>MICRO</workerType>
