@@ -31,6 +31,7 @@
 				<extensions>true</extensions>
 				<configuration>
                     <muleRuntimeVersion>4.11.0</muleRuntimeVersion>
+                    <download>true</download>
                 </configuration>
 			</plugin>
 		</plugins>
