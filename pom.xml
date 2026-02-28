@@ -35,8 +35,8 @@
                     <deploy>
                        <target>cloudhub</target>
                        <cloudhub>
-                              <username>${anypoint.username}</username>
-                              <password>${anypoint.password}</password>
+                              <clientId>${anypoint.clientId}</clientId>
+                            <clientSecret>${anypoint.clientSecret}</clientSecret>
                               <applicationName>git-demo-test</applicationName>
                               <region>us-east-1</region> <!-- change to your runtime region -->
                               <workerType>MICRO</workerType>
