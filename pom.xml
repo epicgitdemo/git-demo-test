@@ -29,6 +29,9 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
+				<configuration>
+                    <muleRuntimeVersion>4.11.0</muleRuntimeVersion>
+                </configuration>
 			</plugin>
 		</plugins>
 	</build>
