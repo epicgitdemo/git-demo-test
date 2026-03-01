@@ -84,4 +84,5 @@ jobs:
           mvn mule:deploy -DmuleRuntimeVersion=4.11.0 \
             -Dmule.artifact="$artifactName" \
             -Danypoint.clientId=${{ secrets.ANYPOINT_CLIENT_ID }} \
-            -Danypoint.clientSecret=${{ secrets.ANYPOINT_CLIENT_SECRET }}
+            -Danypoint.clientSecret=${{ secrets.ANYPOINT_CLIENT_SECRET }} \
+            -Danypoint.environment=Sandbox
