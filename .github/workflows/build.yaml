@@ -26,7 +26,7 @@ jobs:
 
       - name: Build and Deploy to CloudHub Sandbox
         run: |
-          mvn clean deploy \
+          mvn clean package mule:deploy \
             -DmuleRuntimeVersion=4.11.0 \
             -Danypoint.clientId=${{ secrets.ANYPOINT_CLIENT_ID }} \
             -Danypoint.clientSecret=${{ secrets.ANYPOINT_CLIENT_SECRET }} \
