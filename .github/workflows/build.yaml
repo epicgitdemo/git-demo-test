@@ -81,7 +81,7 @@ jobs:
           PASSWORD: ${{ secrets.ANYPOINT_CLIENT_SECRET }}
         run: |
           artifactName=$(ls *.jar | head -1)
-          mvn deploy -DmuleDeploy \
+          mvn mule:deploy -DmuleRuntimeVersion=4.11.0 \
             -Dmule.artifact="$artifactName" \
-            -Danypoint.clientId="$USERNAME" \
-            -Danypoint.clientSecret="$PASSWORD"
+            -Danypoint.clientId=${{ secrets.ANYPOINT_CLIENT_ID }} \
+            -Danypoint.clientSecret=${{ secrets.ANYPOINT_CLIENT_SECRET }}

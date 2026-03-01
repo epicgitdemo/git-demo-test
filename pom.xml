@@ -36,9 +36,10 @@
                        <target>cloudhub</target>
                        <cloudhub>
                               <clientId>${anypoint.clientId}</clientId>
-                            <clientSecret>${anypoint.clientSecret}</clientSecret>
+                             <clientSecret>${anypoint.clientSecret}</clientSecret>
                               <applicationName>git-demo-test</applicationName>
                               <region>us-east-1</region> <!-- change to your runtime region -->
+                              <environment>Sandbox</environment>
                               <workerType>MICRO</workerType>
                                 <workers>1</workers>
                        </cloudhub>
