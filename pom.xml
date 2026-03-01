@@ -34,8 +34,6 @@
                   <muleRuntimeVersion>4.11.0</muleRuntimeVersion>
                    <download>true</download>
                   <cloudHubDeployment>
-                      <clientId>${anypoint.clientId}</clientId>
-                      <clientSecret>${anypoint.clientSecret}</clientSecret>
                        <applicationName>git-demo-test</applicationName>
                         <region>us-east-1</region>
                         <environment>${anypoint.environment}</environment>
