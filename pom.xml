@@ -33,6 +33,9 @@
                   <muleRuntimeVersion>4.11.0</muleRuntimeVersion>
                    <download>true</download>
                   <cloudHubDeployment>
+                      <connectedAppClientId>${client.id}</connectedAppClientId>
+                       <connectedAppSecretId>${client.secret}</connectedAppSecretId>
+                        <connectedAppGrantType>client_credentials</connectedAppGrantType>
                        <applicationName>git-demo-test</applicationName>
                         <region>us-east-1</region>
                         <environment>${anypoint.environment}</environment>

@@ -56,11 +56,11 @@ jobs:
         name: artifacts
     - name: Deploy to Sandbox
       env:
-        USERNAME: ${{ secrets.ANYPOINT_CLIENT_ID }}
-        PASSWORD: ${{ secrets.ANYPOINT_CLIENT_SECRET }}
+        ID: ${{ secrets.CONNECTED_APP_CLIENT_ID }}
+        SECRET: ${{ secrets.CONNECTED_APP_CLIENT_SECRET }}
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn clean package mule:deploy \
          -Dmule.artifact=$artifactName \
-         -Danypoint.clientId=851adf09a4e7449faea82f7e96969a56 \
-         -Danypoint.clientSecret=6D008a5cFe854f43Ba5426A65f7d2191 
+         -Dclient.id="$ID" \
+         -Dclient.secret="$SECRET" 
