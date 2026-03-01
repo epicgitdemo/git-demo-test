@@ -15,6 +15,8 @@
 
 		<app.runtime>4.11.0</app.runtime>
 		<mule.maven.plugin.version>4.7.0</mule.maven.plugin.version>
+		<anypoint.clientId>${anypoint.clientId}</anypoint.clientId>
+        <anypoint.clientSecret>${anypoint.clientSecret}</anypoint.clientSecret>
           <anypoint.environment>Sandbox</anypoint.environment>
 	</properties>
 
