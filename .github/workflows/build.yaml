@@ -24,10 +24,19 @@ jobs:
           distribution: 'zulu'
           java-version: 8
 
+      # Optional debug step
+      - name: Debug secret length
+        env:
+          ANYPOINT_CLIENT_ID: ${{ secrets.ANYPOINT_CLIENT_ID }}
+        run: echo "Client ID length: ${#ANYPOINT_CLIENT_ID}"
+
       - name: Build and Deploy to CloudHub Sandbox
+        env:
+          ANYPOINT_CLIENT_ID: ${{ secrets.ANYPOINT_CLIENT_ID }}
+          ANYPOINT_CLIENT_SECRET: ${{ secrets.ANYPOINT_CLIENT_SECRET }}
         run: |
           mvn clean package mule:deploy \
             -DmuleRuntimeVersion=4.11.0 \
-            -Danypoint.clientId=${{ secrets.ANYPOINT_CLIENT_ID }} \
-            -Danypoint.clientSecret=${{ secrets.ANYPOINT_CLIENT_SECRET }} \
+            -Danypoint.clientId=$ANYPOINT_CLIENT_ID \
+            -Danypoint.clientSecret=$ANYPOINT_CLIENT_SECRET \
             -Danypoint.environment=Sandbox
