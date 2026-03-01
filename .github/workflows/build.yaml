@@ -40,9 +40,4 @@ jobs:
         env:
           ANYPOINT_CLIENT_ID: ${{ secrets.ANYPOINT_CLIENT_ID }}
           ANYPOINT_CLIENT_SECRET: ${{ secrets.ANYPOINT_CLIENT_SECRET }}
-        run: |
-          mvn clean package mule:deploy \
-            -DmuleRuntimeVersion=4.11.0 \
-            -Danypoint.clientId=$ANYPOINT_CLIENT_ID \
-            -Danypoint.clientSecret=$ANYPOINT_CLIENT_SECRET \
-            -Danypoint.environment=Sandbox
+        run: mvn clean package mule:deploy -DmuleRuntimeVersion=4.11.0 -Danypoint.clientId=$ANYPOINT_CLIENT_ID -Danypoint.clientSecret=$ANYPOINT_CLIENT_SECRET -Danypoint.environment=Sandbox
