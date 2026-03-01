@@ -17,7 +17,6 @@
 		<mule.maven.plugin.version>4.7.0</mule.maven.plugin.version>
           <anypoint.environment>Sandbox</anypoint.environment>
 	</properties>
-
 	<build>
 		<plugins>
 			<plugin>
