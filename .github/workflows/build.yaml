@@ -62,5 +62,5 @@ jobs:
         artifactName=$(ls *.jar | head -1)
         mvn clean package mule:deploy \
          -Dmule.artifact=$artifactName \
-         -Danypoint.clientId="851adf09a4e7449faea82f7e96969a56" \
-         -Danypoint.clientSecret="6D008a5cFe854f43Ba5426A65f7d2191" 
+         -Danypoint.clientId=851adf09a4e7449faea82f7e96969a56 \
+         -Danypoint.clientSecret=6D008a5cFe854f43Ba5426A65f7d2191 
