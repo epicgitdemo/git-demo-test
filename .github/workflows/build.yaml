@@ -3,86 +3,31 @@ name: Build and Deploy to Sandbox
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      # 1️⃣ Checkout repository
-      - name: Checkout this repo
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      # 2️⃣ Cache Maven dependencies
       - name: Cache Maven dependencies
         uses: actions/cache@v3
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
 
-      # 3️⃣ Set up JDK 1.8
       - name: Set up JDK 1.8
         uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
           java-version: 8
 
-      # 4️⃣ Build with Mule Runtime 4.11.0
-      - name: Build with Maven
-        run: mvn -B package --file pom.xml -DmuleRuntimeVersion=4.11.0
-
-      # 5️⃣ Stamp artifact file name with commit hash
-      - name: Stamp artifact file name
+      - name: Build and Deploy to CloudHub Sandbox
         run: |
-          commitHash=$(git rev-parse --short "$GITHUB_SHA")
-          for file in target/*.jar; do
-            base=$(basename "$file" .jar)
-            mv "$file" "target/${base}-${commitHash}.jar"
-          done
-
-      # 6️⃣ Upload artifact
-      - name: Upload artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: artifacts
-          path: target/*.jar
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      # 1️⃣ Checkout repo
-      - name: Checkout this repo
-        uses: actions/checkout@v3
-
-      # 2️⃣ Cache Maven dependencies
-      - name: Cache Maven dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
-
-      # 3️⃣ Download build artifact
-      - name: Download artifact
-        uses: actions/download-artifact@v7
-        with:
-          name: artifacts
-          path: .
-
-      # 4️⃣ Deploy to Sandbox
-      - name: Deploy to Sandbox
-        env:
-          USERNAME: ${{ secrets.ANYPOINT_CLIENT_ID }}
-          PASSWORD: ${{ secrets.ANYPOINT_CLIENT_SECRET }}
-        run: |
-          artifactName=$(ls *.jar | head -1)
-          mvn mule:deploy -DmuleRuntimeVersion=4.11.0 \
-            -Dmule.artifact="$artifactName" \
+          mvn clean deploy \
+            -DmuleRuntimeVersion=4.11.0 \
             -Danypoint.clientId=${{ secrets.ANYPOINT_CLIENT_ID }} \
             -Danypoint.clientSecret=${{ secrets.ANYPOINT_CLIENT_SECRET }} \
             -Danypoint.environment=Sandbox
